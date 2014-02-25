@@ -11,10 +11,10 @@ Try out the sample application on [Google Play][6].
 
 Added Pin Feature 
 =================
-NumberPickerBuilder numberPicker = new NumberPickerBuilder();
-numberPicker.setMaxLength(maxLength);
-numberPicker.setMinLength(minLength);
-numberPicker.setDisplayAsPassword(true);
+NumberPickerBuilder numberPicker = new NumberPickerBuilder();<br/>
+numberPicker.setMaxLength(maxLength);<br/>
+numberPicker.setMinLength(minLength);<br/>
+numberPicker.setDisplayAsPassword(true);<br/>
 
 Changelog
 =========
