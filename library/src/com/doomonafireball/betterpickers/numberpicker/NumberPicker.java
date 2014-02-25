@@ -533,6 +533,15 @@ public class NumberPicker extends LinearLayout
 		mSetButton = b;
 		enableSetButton();
 	}
+	
+	public String getPin(){
+		String pin = "";
+		for (int i = 0; i < mInputSize; i++) {
+			pin += Integer.toString(mInput[i]);
+		}
+		
+		return pin;
+	}
 
 	/**
 	 * Returns the number as currently inputted by the user

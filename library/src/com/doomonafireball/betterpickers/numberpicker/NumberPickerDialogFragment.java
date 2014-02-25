@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.doomonafireball.betterpickers.R;
+import com.google.android.gms.internal.ac;
 
 /**
  * Dialog to set alarm time.
@@ -228,6 +229,12 @@ public class NumberPickerDialogFragment extends DialogFragment {
 					frag.onDialogNumberSet(mReference, mPicker.getNumber(),
 							mPicker.getDecimal(), mPicker.getIsNegative(),
 							number);
+				} else if (activity instanceof PinPickerDialogHandler) {
+					final PinPickerDialogHandler act = (PinPickerDialogHandler) activity;
+					act.onDialogPinSet(mReference, mPicker.getPin());
+				} else if (fragment instanceof PinPickerDialogHandler) {
+					final PinPickerDialogHandler frag = (PinPickerDialogHandler) fragment;
+					frag.onDialogPinSet(mReference, mPicker.getPin());
 				}
 				dismiss();
 			}
@@ -278,6 +285,11 @@ public class NumberPickerDialogFragment extends DialogFragment {
 		void onDialogNumberSet(
 				int reference, int number, double decimal, boolean isNegative,
 				double fullNumber);
+	}
+
+	public interface PinPickerDialogHandler {
+
+		void onDialogPinSet(int reference, String pin);
 	}
 
 	/**
