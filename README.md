@@ -9,6 +9,13 @@ Try out the sample application on [Google Play][6].
          src="http://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
 </a>
 
+Added Pin Feature 
+=================
+NumberPickerBuilder numberPicker = new NumberPickerBuilder();
+numberPicker.setMaxLength(maxLength);
+numberPicker.setMinLength(minLength);
+numberPicker.setDisplayAsPassword(true);
+
 Changelog
 =========
 
