@@ -16,6 +16,15 @@ numberPicker.setMaxLength(maxLength);<br/>
 numberPicker.setMinLength(minLength);<br/>
 numberPicker.setDisplayAsPassword(true);<br/>
 
+* Implements PinPickerDialogHandler 
+* @Override
+	public void onDialogPinSet(int reference, String pin) {
+		editText.setText(pin);
+
+    // To convert the text passed to the valid InputType
+		editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+	}
+
 Changelog
 =========
 
