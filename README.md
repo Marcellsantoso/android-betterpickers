@@ -17,7 +17,7 @@ numberPicker.setMinLength(minLength);<br/>
 numberPicker.setAllowZero(true);<br/>
 numberPicker.setHideNumberInput(true);<br/>
 
-// Password is default to allowToZero, and HideNumberInput
+// Password is default to allowToZero, and HideNumberInput<br/>
 numberPicker.setDisplayAsPassword(true);<br/>
 
 * Implements PinPickerDialogHandler 
