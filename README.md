@@ -14,6 +14,10 @@ Added Pin Feature
 NumberPickerBuilder numberPicker = new NumberPickerBuilder();<br/>
 numberPicker.setMaxLength(maxLength);<br/>
 numberPicker.setMinLength(minLength);<br/>
+numberPicker.setAllowZero(true);<br/>
+numberPicker.setHideNumberInput(true);<br/>
+
+// Password is default to allowToZero, and HideNumberInput
 numberPicker.setDisplayAsPassword(true);<br/>
 
 * Implements PinPickerDialogHandler 
