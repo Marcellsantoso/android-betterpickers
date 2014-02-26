@@ -425,20 +425,20 @@ public class NumberPicker extends LinearLayout
 					&& val != CLICKED_DECIMAL && !isAllowZero) {
 				mInput[0] = val;
 			} else {
-//				if (!isNormalInput) {
-					// Shift number backward (calculator method)
-					for (int i = mInputPointer; i >= 0; i--) {
-						mInput[i + 1] = mInput[i];
-						mInputStr[i + 1] = "*";
-					}
-					mInputPointer++;
-					mInput[0] = val;
-					mInputStr[0] = "*";
-//				} else {
-//					mInputPointer++;
-//					mInput[mInputPointer] = val;
-//					mInputStr[mInputPointer] = "*";
-//				}
+				// if (!isNormalInput) {
+				// Shift number backward (calculator method)
+				for (int i = mInputPointer; i >= 0; i--) {
+					mInput[i + 1] = mInput[i];
+					mInputStr[i + 1] = "*";
+				}
+				mInputPointer++;
+				mInput[0] = val;
+				mInputStr[0] = "*";
+				// } else {
+				// mInputPointer++;
+				// mInput[mInputPointer] = val;
+				// mInputStr[mInputPointer] = "*";
+				// }
 			}
 		}
 	}
@@ -534,16 +534,17 @@ public class NumberPicker extends LinearLayout
 		}
 
 		// Nothing entered - disable
-//		if (mInputPointer <= mInputSize - 1 || mInputPointer > mMinLength - 1) {
-//			mSetButton.setEnabled(false);
-//			return;
-//		} else
-//			// If the user entered 1 digits or more
-//			mSetButton.setEnabled(true);
-		
-		if(mInputPointer <=  mInputSize - 1 && mInputPointer >= mMinLength - 1){
+		// if (mInputPointer <= mInputSize - 1 || mInputPointer > mMinLength -
+		// 1) {
+		// mSetButton.setEnabled(false);
+		// return;
+		// } else
+		// // If the user entered 1 digits or more
+		// mSetButton.setEnabled(true);
+
+		if (mInputPointer <= mInputSize - 1 && mInputPointer >= mMinLength - 1) {
 			mSetButton.setEnabled(true);
-		}else{
+		} else {
 			mSetButton.setEnabled(false);
 		}
 	}
@@ -560,9 +561,12 @@ public class NumberPicker extends LinearLayout
 	}
 
 	public String getPin() {
-		String numberString = Double.toString(getEnteredNumber());
-		String[] split = numberString.split("\\.");
-		return split[0];
+		String pin = "";
+		for (int i = mInput.length - 1; i >= 0; i--) {
+			if (mInput[i] != -1)
+				pin += Integer.toString(mInput[i]);
+		}
+		return pin;
 	}
 
 	/**
