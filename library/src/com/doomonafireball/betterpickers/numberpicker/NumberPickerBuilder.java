@@ -20,11 +20,13 @@ public class NumberPickerBuilder {
 	private Fragment targetFragment;
 	private Integer minNumber;
 	private Integer maxNumber;
-	private Integer maxLength;
-	private Integer minLength;
+	private int maxLength;
+	private int minLength;
 	private Integer plusMinusVisibility;
 	private Integer decimalVisibility;
-	private boolean isPassword;
+	private boolean isHideNumber;
+	private boolean isAllowZero;
+	private boolean isNormalInput;
 	private String labelText;
 	private int mReference;
 	private Vector<NumberPickerDialogHandler> mNumberPickerDialogHandlers = new Vector<NumberPickerDialogHandler>();
@@ -117,12 +119,35 @@ public class NumberPickerBuilder {
 	}
 
 	public NumberPickerBuilder setDisplayAsPassword(boolean isPassword) {
-		this.isPassword = isPassword;
 		if (isPassword) {
 			// If password is true, hide decimal and +- button
 			setDecimalVisibility(View.GONE);
 			setPlusMinusVisibility(View.GONE);
+			
+			// Replace input with * by default
+			isHideNumber = true;
+			
+			// For calculator, it doesn't allow zero in front
+			isAllowZero = true;
+			
+			// Normal input, unlike calculator
+			isNormalInput = true;
 		}
+		return this;
+	}
+	
+	public NumberPickerBuilder setAllowZero(boolean isAllowZero){
+		this.isAllowZero = isAllowZero;
+		return this;
+	}
+	
+	public NumberPickerBuilder setHideNumberInput(boolean isHideInput){
+		this.isHideNumber = isHideInput;
+		return this;
+	}
+	
+	public NumberPickerBuilder setNormalInput(boolean isNormalInput){
+		this.isNormalInput = isNormalInput;
 		return this;
 	}
 
@@ -224,7 +249,9 @@ public class NumberPickerBuilder {
 						plusMinusVisibility, decimalVisibility, labelText);
 		fragment.setMaxLength(maxLength);
 		fragment.setMinLength(minLength);
-		fragment.setPassword(isPassword);
+		fragment.setHideNumber(isHideNumber);
+		fragment.setAllowZero(isAllowZero);
+		fragment.setNormalInput(isNormalInput);
 
 		if (targetFragment != null) {
 			fragment.setTargetFragment(targetFragment, 0);

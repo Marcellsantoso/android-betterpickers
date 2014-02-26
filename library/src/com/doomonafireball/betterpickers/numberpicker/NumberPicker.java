@@ -24,7 +24,9 @@ public class NumberPicker extends LinearLayout
 
 	protected int mInputSize = 20;
 	protected int mMinLength;
-	protected boolean isPassword;
+	protected boolean isHideNumber;
+	protected boolean isAllowZero;
+	protected boolean isNormalInput;
 	protected final Button mNumbers[] = new Button[10];
 	protected int mInput[] = new int[mInputSize];
 	protected String mInputStr[] = new String[mInputSize];
@@ -263,15 +265,25 @@ public class NumberPicker extends LinearLayout
 	}
 
 	public void setMaxLength(int maxLength) {
-		mInputSize = maxLength;
+		if (maxLength > 0)
+			mInputSize = maxLength;
 	}
 
 	public void setMinLength(int minLength) {
-		mMinLength = minLength;
+		if (minLength > 0)
+			mMinLength = minLength;
 	}
 
-	public void setPassword(boolean isPassword) {
-		this.isPassword = isPassword;
+	public void setAllowZero(boolean isAllowZero) {
+		this.isAllowZero = isAllowZero;
+	}
+
+	public void setHideNumber(boolean isHideNumber) {
+		this.isHideNumber = isHideNumber;
+	}
+
+	public void setNormalNumber(boolean isNormalInput) {
+		this.isNormalInput = isNormalInput;
 	}
 
 	/**
@@ -410,16 +422,23 @@ public class NumberPicker extends LinearLayout
 			// For 0 we need to check if we have a value of zero or not
 			// If isPassword = true, allow user to input 0
 			if (mInput[0] == 0 && mInput[1] == -1 && !containsDecimal()
-					&& val != CLICKED_DECIMAL && !isPassword) {
+					&& val != CLICKED_DECIMAL && !isAllowZero) {
 				mInput[0] = val;
 			} else {
-				for (int i = mInputPointer; i >= 0; i--) {
-					mInput[i + 1] = mInput[i];
-					mInputStr[i + 1] = "*";
-				}
-				mInputPointer++;
-				mInput[0] = val;
-				mInputStr[0] = "*";
+//				if (!isNormalInput) {
+					// Shift number backward (calculator method)
+					for (int i = mInputPointer; i >= 0; i--) {
+						mInput[i + 1] = mInput[i];
+						mInputStr[i + 1] = "*";
+					}
+					mInputPointer++;
+					mInput[0] = val;
+					mInputStr[0] = "*";
+//				} else {
+//					mInputPointer++;
+//					mInput[mInputPointer] = val;
+//					mInputStr[mInputPointer] = "*";
+//				}
 			}
 		}
 	}
@@ -471,7 +490,7 @@ public class NumberPicker extends LinearLayout
 			} else if (mInput[i] == CLICKED_DECIMAL) {
 				value += ".";
 			} else {
-				if (isPassword)
+				if (isHideNumber)
 					value += mInputStr[i];
 				else
 					value += mInput[i];
@@ -515,12 +534,18 @@ public class NumberPicker extends LinearLayout
 		}
 
 		// Nothing entered - disable
-		if (mInputPointer < mInputSize - 1 || mInputPointer > mMinLength - 1) {
-			mSetButton.setEnabled(false);
-			return;
-		} else
-			// If the user entered 1 digits or more
+//		if (mInputPointer <= mInputSize - 1 || mInputPointer > mMinLength - 1) {
+//			mSetButton.setEnabled(false);
+//			return;
+//		} else
+//			// If the user entered 1 digits or more
+//			mSetButton.setEnabled(true);
+		
+		if(mInputPointer <=  mInputSize - 1 && mInputPointer >= mMinLength - 1){
 			mSetButton.setEnabled(true);
+		}else{
+			mSetButton.setEnabled(false);
+		}
 	}
 
 	/**
@@ -533,14 +558,11 @@ public class NumberPicker extends LinearLayout
 		mSetButton = b;
 		enableSetButton();
 	}
-	
-	public String getPin(){
-		String pin = "";
-		for (int i = 0; i < mInputSize; i++) {
-			pin += Integer.toString(mInput[i]);
-		}
-		
-		return pin;
+
+	public String getPin() {
+		String numberString = Double.toString(getEnteredNumber());
+		String[] split = numberString.split("\\.");
+		return split[0];
 	}
 
 	/**

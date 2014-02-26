@@ -22,7 +22,7 @@
                     android:paddingLeft="@dimen/timer_padding_left"
                     android:layout_gravity="left"
                     android:baselineAligned="false"
-                    android:gravity="top">
+                    android:gravity="center_vertical">
                 <com.doomonafireball.betterpickers.widget.ZeroTopPaddingTextView
                         android:id="@+id/number"
                         android:singleLine="true"

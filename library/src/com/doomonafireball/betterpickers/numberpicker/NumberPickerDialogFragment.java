@@ -45,9 +45,11 @@ public class NumberPickerDialogFragment extends DialogFragment {
 
 	private Integer mMinNumber = null;
 	private Integer mMaxNumber = null;
-	private Integer mMaxLength = null;
-	private Integer mMinLength = null;
-	private boolean mIsPassword;
+	private int mMaxLength;
+	private int mMinLength;
+	private boolean mIsHideNumber;
+	private boolean mIsAllowZero;
+	private boolean mIsNormalInput;
 	private int mPlusMinusVisibility = View.VISIBLE;
 	private int mDecimalVisibility = View.VISIBLE;
 	private Vector<NumberPickerDialogHandler> mPinPickerDialogHandlers = new Vector<NumberPickerDialogHandler>();
@@ -184,7 +186,9 @@ public class NumberPickerDialogFragment extends DialogFragment {
 		mPicker = (NumberPicker) v.findViewById(R.id.number_picker);
 		mPicker.setMaxLength(mMaxLength);
 		mPicker.setMinLength(mMinLength);
-		mPicker.setPassword(mIsPassword);
+		mPicker.setHideNumber(mIsHideNumber);
+		mPicker.setAllowZero(mIsAllowZero);
+		mPicker.setNormalNumber(mIsNormalInput);
 		mPicker.setSetButton(mSet);
 		mSet.setOnClickListener(new View.OnClickListener() {
 
@@ -272,11 +276,18 @@ public class NumberPickerDialogFragment extends DialogFragment {
 	public void setMinLength(int minLength) {
 		this.mMinLength = minLength;
 	}
-
-	public void setPassword(boolean isPassword) {
-		this.mIsPassword = isPassword;
+	
+	public void setHideNumber(boolean isHideNumber) {
+		this.mIsHideNumber = isHideNumber;
 	}
 
+	public void setAllowZero(boolean isAllowZero) {
+		this.mIsAllowZero = isAllowZero;
+	}
+
+	public void setNormalInput(boolean isNormalInput){
+		this.mIsNormalInput = isNormalInput;
+	}
 	/**
 	 * This interface allows objects to register for the Picker's set action.
 	 */
