@@ -12,14 +12,21 @@ Try out the sample application on [Google Play][6].
 Added Pin Feature 
 =================
 NumberPickerBuilder numberPicker = new NumberPickerBuilder();<br/>
+// Set maximum length can be input<br/>
 numberPicker.setMaxLength(maxLength);<br/>
+// Set minimum length can be input<br/>
 numberPicker.setMinLength(minLength);<br/>
+
+// By default it doesn't allow to input 012, it will be converted to 12<br/.
 numberPicker.setAllowZero(true);<br/>
+
+// To replace all the number input with * (for password or pin)<br/>
 numberPicker.setHideNumberInput(true);<br/>
 
 // Password is default to allowToZero, and HideNumberInput<br/>
 numberPicker.setDisplayAsPassword(true);<br/>
 
+// Must implements this, otherwise everything will be returned as an integer
 * Implements PinPickerDialogHandler 
 * @Override
 	public void onDialogPinSet(int reference, String pin) {
