@@ -29,16 +29,27 @@ import android.widget.TextView;
  */
 public class ZeroTopPaddingTextView extends TextView {
 
-    private static final float NORMAL_FONT_PADDING_RATIO = 0.328f;
-    // the bold fontface has less empty space on the top
-    private static final float BOLD_FONT_PADDING_RATIO = 0.208f;
+//    private static final float NORMAL_FONT_PADDING_RATIO = 0.328f;
+//    // the bold fontface has less empty space on the top
+//    private static final float BOLD_FONT_PADDING_RATIO = 0.208f;
+//
+//    private static final float NORMAL_FONT_BOTTOM_PADDING_RATIO = 0.25f;
+//    // the bold fontface has less empty space on the top
+//    private static final float BOLD_FONT_BOTTOM_PADDING_RATIO = 0.208f;
+//
+//    // pre-ICS (Droid Sans) has weird empty space on the bottom
+//    private static final float PRE_ICS_BOTTOM_PADDING_RATIO = 0.233f;
+	
+	 private static final float NORMAL_FONT_PADDING_RATIO = 0.18f;
+	    // the bold fontface has less empty space on the top
+	    private static final float BOLD_FONT_PADDING_RATIO = 0.08f;
 
-    private static final float NORMAL_FONT_BOTTOM_PADDING_RATIO = 0.25f;
-    // the bold fontface has less empty space on the top
-    private static final float BOLD_FONT_BOTTOM_PADDING_RATIO = 0.208f;
+	    private static final float NORMAL_FONT_BOTTOM_PADDING_RATIO = 0.10f;
+	    // the bold fontface has less empty space on the top
+	    private static final float BOLD_FONT_BOTTOM_PADDING_RATIO = 0.08f;
 
-    // pre-ICS (Droid Sans) has weird empty space on the bottom
-    private static final float PRE_ICS_BOTTOM_PADDING_RATIO = 0.233f;
+	    // pre-ICS (Droid Sans) has weird empty space on the bottom
+	    private static final float PRE_ICS_BOTTOM_PADDING_RATIO = 0.08f;
 
     private static final Typeface SAN_SERIF_BOLD = Typeface.create("san-serif", Typeface.BOLD);
     private static final Typeface SAN_SERIF_CONDENSED_BOLD = Typeface.create("sans-serif-condensed", Typeface.BOLD);

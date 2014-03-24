@@ -86,6 +86,7 @@ public class NumberView extends LinearLayout {
         mMinusLabel = (ZeroTopPaddingTextView) findViewById(R.id.minus_label);
         if (mNumber != null) {
             mOriginalNumberTypeface = mNumber.getTypeface();
+            mNumber.updatePaddingForBoldDate();
         }
         // Set the lowest time unit with thin font
         if (mNumber != null) {

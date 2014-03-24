@@ -123,7 +123,7 @@ public class DatePickerDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.date_picker_dialog, null);
+        View v = inflater.inflate(R.layout.date_picker_dialog_better, null);
         mSet = (Button) v.findViewById(R.id.set_button);
         mCancel = (Button) v.findViewById(R.id.cancel_button);
         mCancel.setOnClickListener(new View.OnClickListener() {
