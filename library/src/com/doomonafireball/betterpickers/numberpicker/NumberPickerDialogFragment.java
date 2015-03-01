@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.doomonafireball.betterpickers.R;
-import com.google.android.gms.internal.ac;
 
 /**
  * Dialog to set alarm time.
